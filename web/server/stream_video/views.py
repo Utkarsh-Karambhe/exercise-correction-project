@@ -85,10 +85,10 @@ def upload_video(request):
             os.makedirs(settings.MEDIA_ROOT, exist_ok=True)
             os.makedirs(os.path.join(settings.STATICFILES_DIRS[0], "images"), exist_ok=True)
 
-            # Convert any video to .mp4
+            # Convert any video to .webm
             now = datetime.now()
             now = int(now.strftime("%Y%m%d%H%M%S"))
-            name_to_save = f"video_{now}.mp4"
+            name_to_save = f"video_{now}.webm"
 
             # Safely write the uploaded file to disk to avoid InMemoryUploadedFile crashes
             temp_path = os.path.join(settings.MEDIA_ROOT, "temp_" + name_to_save)

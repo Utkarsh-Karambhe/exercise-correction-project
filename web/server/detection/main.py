@@ -56,7 +56,7 @@ def pose_detection(
     size = (width, height)
     fps = int(cap.get(cv2.CAP_PROP_FPS))
 
-    fourcc = cv2.VideoWriter_fourcc(*"avc1")
+    fourcc = cv2.VideoWriter_fourcc(*"vp80")
     save_to_path = f"{settings.MEDIA_ROOT}/{video_name_to_save}"
     out = cv2.VideoWriter(save_to_path, fourcc, fps, size)
 
@@ -129,7 +129,7 @@ def exercise_detection(
     fps = int(cap.get(cv2.CAP_PROP_FPS))
     frame_count = 0
 
-    fourcc = cv2.VideoWriter_fourcc(*"avc1")
+    fourcc = cv2.VideoWriter_fourcc(*"vp80")
     saved_path = f"{settings.MEDIA_ROOT}/{video_name_to_save}"
     out = cv2.VideoWriter(saved_path, fourcc, fps, size)
 
