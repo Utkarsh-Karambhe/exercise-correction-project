@@ -1,0 +1,20 @@
+FROM python:3.11
+
+# Install system dependencies required for OpenCV
+RUN apt-get update && apt-get install -y \
+    ffmpeg \
+    libsm6 \
+    libxext6 \
+    && rm -rf /var/lib/apt/lists/*
+
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
+WORKDIR /app
+
+# Install Python requirements
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# The code will be mounted as a volume directly via docker-compose.yml,
+# so we don't need to COPY the whole app here for local development.

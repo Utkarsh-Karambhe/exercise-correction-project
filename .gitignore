@@ -1,0 +1,26 @@
+# Virtual environments
+venv/
+venv_mac/
+env/
+.pylibs/
+
+# Node
+node_modules/
+web/**/node_modules/
+
+# Large folders
+pylibs/
+core/**/*.ipynb
+
+# Media & outputs
+*.mp4
+*.webm
+web/*/static/media/
+web/*/static/images/
+
+# Python cache
+__pycache__/
+*.pyc
+
+web/server/static/media/
+web/server/static/images/
