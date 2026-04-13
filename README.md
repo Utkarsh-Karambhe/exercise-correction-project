@@ -17,17 +17,17 @@
 
 ### AI-Powered Exercise Form Analysis · Real-Time Pose Estimation · Multi-Set Analytics
 
-![Python](https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![Django](https://img.shields.io/badge/Django-4.1-092E20?style=for-the-badge&logo=django&logoColor=white)
-![Vue.js](https://img.shields.io/badge/Vue.js-3.0-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white)
-![MediaPipe](https://img.shields.io/badge/MediaPipe-0.10-FF6F00?style=for-the-badge&logo=google&logoColor=white)
-![scikit-learn](https://img.shields.io/badge/scikit--learn-Latest-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white)
-![OpenCV](https://img.shields.io/badge/OpenCV-4.13-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+
+
+
+
+
+
+
 
 </div>
 
----
+***
 
 ## 🧠 What Is This?
 
@@ -42,7 +42,7 @@ Webcam / Video  →  MediaPipe Pose  →  ML Classifier  →  Error Detection  �
 
 > Supports **Squat**, **Plank**, **Bicep Curl**, and **Lunge** — with live webcam streaming or pre-recorded video upload.
 
----
+***
 
 ## ✨ Key Features
 
@@ -58,7 +58,7 @@ Webcam / Video  →  MediaPipe Pose  →  ML Classifier  →  Error Detection  �
 | 📦 **Multi-Set Sessions** | 1–5 sets with fatigue index & trend analysis |
 | ⚡ **GPU Acceleration** | Optional Hummingbird-ML + CUDA 12.1 support |
 
----
+***
 
 ## 🏗️ Architecture
 
@@ -97,7 +97,7 @@ Webcam / Video  →  MediaPipe Pose  →  ML Classifier  →  Error Detection  �
              └────────────────────────┘
 ```
 
----
+***
 
 ## 🏋️ Supported Exercises
 
@@ -119,7 +119,7 @@ Features:   36  (9 × x, y, z, visibility)
 
 **📊 Model Evaluation**
 
-![Squat Model Evaluation Matrix](images/squat_eval_3.png)
+
 
 </details>
 
@@ -142,7 +142,7 @@ Features:   68  (17 × x, y, z, visibility)
 
 **📊 Model Evaluation**
 
-![Plank Model Evaluation Matrix](images/plank_eval_3.png)
+
 
 </details>
 
@@ -166,7 +166,7 @@ Features:   36  (9 × x, y, z, visibility)
 
 **📊 Model Evaluation**
 
-![Bicep Curl Model Evaluation Matrix](images/bicep_curl_eval_3.png)
+
 
 </details>
 
@@ -188,11 +188,11 @@ Features:     52  (13 × x, y, z, visibility)
 
 **📊 Model Evaluation**
 
-![Lunge Model Evaluation Matrix](images/lunge_eval_3.png)
+
 
 </details>
 
----
+***
 
 ## 📊 Multi-Set Session Analytics
 
@@ -217,7 +217,7 @@ normalized_range_of_motion = 100 if errors == 0 else 85
 set_score            = normalized_accuracy
 ```
 
----
+***
 
 ## ⚡ WebSocket Real-Time Flow
 
@@ -243,7 +243,7 @@ connect() ───────────────────────�
   counter: 12 }
 ```
 
----
+***
 
 ## 🗄️ Database Schema
 
@@ -270,7 +270,7 @@ connect() ───────────────────────�
 | `total_errors` | Integer | Error count for this set |
 | `rep_count` | Integer | Reps detected in this set |
 
----
+***
 
 ## 🌐 API Reference
 
@@ -298,7 +298,7 @@ ws://127.0.0.1:8000/ws/stream/
 ← Recv:   { "msg_type": "summary", "type": "squat", "details": [...], "counter": 12 }
 ```
 
----
+***
 
 ## 🚀 Getting Started
 
@@ -339,7 +339,7 @@ http://localhost:5173
 - 📷 **Real Time** → Webcam-based live detection
 - 📁 **Video Upload** → File-based detection + multi-set analysis
 
----
+***
 
 ## 🐳 Docker Deployment
 
@@ -354,7 +354,7 @@ docker run -e VITE_BASE_URL=http://127.0.0.1 -p 80:8000 exercise-correction
 open http://127.0.0.1
 ```
 
----
+***
 
 ## ⚙️ Configuration Reference
 
@@ -368,7 +368,7 @@ open http://127.0.0.1
 | WS frame rate | `RealTime.vue` | `150ms` (~6.7 FPS) | WebSocket send interval |
 | WS JPEG quality | client / server | `60%` / `70%` | Compression settings |
 
----
+***
 
 ## 🛠️ Technology Stack
 
@@ -412,7 +412,7 @@ open http://127.0.0.1
 </tr>
 </table>
 
----
+***
 
 ## 📁 Project Structure
 
@@ -459,8 +459,7 @@ Exercise-Correction/
 │           └── model/           # 📦 Serialized .pkl models
 ```
 
-
----
+***
 
 <div align="center">
 
