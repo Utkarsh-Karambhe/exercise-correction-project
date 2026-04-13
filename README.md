@@ -3,31 +3,33 @@
 ```
 ███████╗██╗  ██╗███████╗██████╗  ██████╗██╗███████╗███████╗
 ██╔════╝╚██╗██╔╝██╔════╝██╔══██╗██╔════╝██║██╔════╝██╔════╝
-█████╗   ╚███╔╝ █████╗  ██████╔╝██║     ██║███████╗█████╗  
-██╔══╝   ██╔██╗ ██╔══╝  ██╔══██╗██║     ██║╚════██║██╔══╝  
+█████╗   ╚███╔╝ █████╗  ██████╔╝██║     ██║███████╗█████╗
+██╔══╝   ██╔██╗ ██╔══╝  ██╔══██╗██║     ██║╚════██║██╔══╝
 ███████╗██╔╝ ██╗███████╗██║  ██║╚██████╗██║███████║███████╗
 ╚══════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝ ╚═════╝╚═╝╚══════╝╚══════╝
-        ██████╗ ██████╗ ██████╗ ██████╗ ███████╗ ██████╗████████╗██╗ ██████╗ ███╗   ██╗
-       ██╔════╝██╔═══██╗██╔══██╗██╔══██╗██╔════╝██╔════╝╚══██╔══╝██║██╔═══██╗████╗  ██║
-       ██║     ██║   ██║██████╔╝██████╔╝█████╗  ██║        ██║   ██║██║   ██║██╔██╗ ██║
-       ██║     ██║   ██║██╔══██╗██╔══██╗██╔══╝  ██║        ██║   ██║██║   ██║██║╚██╗██║
-       ╚██████╗╚██████╔╝██║  ██║██║  ██║███████╗╚██████╗   ██║   ██║╚██████╔╝██║ ╚████║
-        ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝ ╚═════╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝
+```
+
+```
+ ██████╗ ██████╗ ██████╗ ██████╗ ███████╗ ██████╗████████╗██╗ ██████╗ ███╗   ██╗
+██╔════╝██╔═══██╗██╔══██╗██╔══██╗██╔════╝██╔════╝╚══██╔══╝██║██╔═══██╗████╗  ██║
+██║     ██║   ██║██████╔╝██████╔╝█████╗  ██║        ██║   ██║██║   ██║██╔██╗ ██║
+██║     ██║   ██║██╔══██╗██╔══██╗██╔══╝  ██║        ██║   ██║██║   ██║██║╚██╗██║
+╚██████╗╚██████╔╝██║  ██║██║  ██║███████╗╚██████╗   ██║   ██║╚██████╔╝██║ ╚████║
+ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝ ╚═════╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝
 ```
 
 ### AI-Powered Exercise Form Analysis · Real-Time Pose Estimation · Multi-Set Analytics
 
-
-
-
-
-
-
-
+![Python](https://img.shields.io/badge/Python-3.11-3776AB?style=flat-square&logo=python&logoColor=white)
+![Django](https://img.shields.io/badge/Django-4.1.2-092E20?style=flat-square&logo=django&logoColor=white)
+![Vue.js](https://img.shields.io/badge/Vue.js-3.0-4FC08D?style=flat-square&logo=vue.js&logoColor=white)
+![MediaPipe](https://img.shields.io/badge/MediaPipe-0.10.33-0097A7?style=flat-square&logo=google&logoColor=white)
+![OpenCV](https://img.shields.io/badge/OpenCV-4.13-5C3EE8?style=flat-square&logo=opencv&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
 
 </div>
 
-***
+---
 
 ## 🧠 What Is This?
 
@@ -37,72 +39,74 @@ It combines **MediaPipe's 33-point body pose estimation** with **trained Scikit-
 
 ```
 Webcam / Video  →  MediaPipe Pose  →  ML Classifier  →  Error Detection  →  Annotated Output
-    📷                 🦴                  🤖                  ⚠️                   📊
+      📷                🦴                  🤖                  ⚠️                   📊
 ```
 
 > Supports **Squat**, **Plank**, **Bicep Curl**, and **Lunge** — with live webcam streaming or pre-recorded video upload.
 
-***
+---
 
 ## ✨ Key Features
 
-| Feature | Description |
-|---|---|
-| 🎥 **Real-Time Detection** | Webcam stream at ~7 FPS via WebSocket |
-| 📁 **Video Upload** | Process pre-recorded `.mp4`/`.webm` files |
-| 🦴 **Pose Estimation** | MediaPipe 33-landmark body skeleton |
-| 🤖 **ML Form Analysis** | Trained Scikit-Learn classifiers per exercise |
-| 🔢 **Rep Counting** | Automatic stage-based repetition tracking |
-| ⚠️ **Error Detection** | Geometric + ML-based error identification |
-| 📸 **Error Screenshots** | JPEG snapshots captured at error frames |
-| 📦 **Multi-Set Sessions** | 1–5 sets with fatigue index & trend analysis |
-| ⚡ **GPU Acceleration** | Optional Hummingbird-ML + CUDA 12.1 support |
+| Feature                    | Description                                              |
+| :------------------------- | :------------------------------------------------------- |
+| 🎥 **Real-Time Detection** | Webcam stream at ~7 FPS via WebSocket                    |
+| 📁 **Video Upload**        | Process pre-recorded `.mp4` / `.webm` files              |
+| 🦴 **Pose Estimation**     | MediaPipe 33-landmark body skeleton                      |
+| 🤖 **ML Form Analysis**    | Trained Scikit-Learn classifiers per exercise            |
+| 🔢 **Rep Counting**        | Automatic stage-based repetition tracking                |
+| ⚠️ **Error Detection**     | Geometric + ML-based error identification                |
+| 📸 **Error Screenshots**   | JPEG snapshots captured at error frames                  |
+| 📦 **Multi-Set Sessions**  | 1–5 sets with fatigue index & trend analysis             |
+| ⚡ **GPU Acceleration**    | Optional Hummingbird-ML + CUDA 12.1 support              |
 
-***
+---
 
 ## 🏗️ Architecture
 
 ```
-┌─────────────────────────────────────────────────────────────────┐
-│                        BROWSER  (Vue 3)                         │
-│                                                                 │
-│   Home.vue           VideoStreaming.vue        RealTime.vue     │
-│   (Mode Select)      (Upload + Multi-Set)    (Webcam + WS)      │
-└────────────┬──────────────────────────────────────┬────────────┘
-             │  HTTP/REST  (Axios)                  │  WebSocket
-             ▼                                      ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                   DJANGO  (Daphne / ASGI)                       │
-│                                                                 │
-│   stream_video/views.py          stream_video/consumers.py      │
-│   (upload, session, aggregate)   (ExerciseStreamConsumer)       │
-└────────────────────────┬────────────────────────────────────────┘
-                         │
-             ┌───────────▼────────────┐
-             │   detection/  (ML)     │
-             │                        │
-             │  MediaPipe Pose        │
-             │       ↓                │
-             │  Feature Extraction   │
-             │       ↓                │
-             │  sklearn .predict()   │
-             │       ↓                │
-             │  Geometric Analysis   │
-             └───────────┬────────────┘
-                         │
-             ┌───────────▼────────────┐
-             │  services.py           │
-             │  Multi-Set Analytics   │
-             │  SQLite via Django ORM │
-             └────────────────────────┘
+┌────────────────────────────────────────────────────────────────────┐
+│                         BROWSER  (Vue 3)                           │
+│                                                                    │
+│    Home.vue            VideoStreaming.vue          RealTime.vue    │
+│   (Mode Select)       (Upload + Multi-Set)       (Webcam + WS)     │
+└──────────┬─────────────────────────────────────────┬──────────────┘
+           │  HTTP / REST  (Axios)                   │  WebSocket
+           ▼                                         ▼
+┌────────────────────────────────────────────────────────────────────┐
+│                    DJANGO  (Daphne / ASGI)                         │
+│                                                                    │
+│    stream_video/views.py            stream_video/consumers.py      │
+│   (upload, session, aggregate)      (ExerciseStreamConsumer)       │
+└──────────────────────────┬─────────────────────────────────────────┘
+                           │
+               ┌───────────▼────────────┐
+               │    detection/  (ML)    │
+               │                        │
+               │    MediaPipe Pose      │
+               │          ↓             │
+               │   Feature Extraction  │
+               │          ↓             │
+               │   sklearn .predict()  │
+               │          ↓             │
+               │   Geometric Analysis  │
+               └───────────┬────────────┘
+                           │
+               ┌───────────▼────────────┐
+               │      services.py       │
+               │   Multi-Set Analytics  │
+               │   SQLite via Django ORM│
+               └────────────────────────┘
 ```
 
-***
+---
 
 ## 🏋️ Supported Exercises
 
 <details>
 <summary><strong>🦵 Squat</strong> — Stage + Foot/Knee Placement Analysis</summary>
+
+<br>
 
 ```
 Model:      squat_model.pkl  (~187 KB)
@@ -117,18 +121,16 @@ Features:   36  (9 × x, y, z, visibility)
 
 **Fallback Counting:** Knee angle oscillation — peaks below 140° / above 160°
 
-**📊 Model Evaluation**
-
-
-
 </details>
 
 <details>
 <summary><strong>🧘 Plank</strong> — Static Posture Classification</summary>
 
+<br>
+
 ```
-Model:      plank_model.pkl  (~2.4 KB)
-Scaler:     plank_input_scaler.pkl  (~3.2 KB)
+Model:      plank_model.pkl          (~2.4 KB)
+Scaler:     plank_input_scaler.pkl   (~3.2 KB)
 Landmarks:  17  (full upper + lower body)
 Features:   68  (17 × x, y, z, visibility)
 ```
@@ -140,18 +142,16 @@ Features:   68  (17 × x, y, z, visibility)
 
 > No rep counter — plank is a static hold. Error frames are saved on form breaks.
 
-**📊 Model Evaluation**
-
-
-
 </details>
 
 <details>
 <summary><strong>💪 Bicep Curl</strong> — Per-Arm Independent Tracking</summary>
 
+<br>
+
 ```
-Model:      bicep_curl_model.pkl  (~3.6 MB — largest model)
-Scaler:     bicep_curl_input_scaler.pkl  (~1.9 KB)
+Model:      bicep_curl_model.pkl          (~3.6 MB — largest model)
+Scaler:     bicep_curl_input_scaler.pkl   (~1.9 KB)
 Landmarks:  9  (nose, shoulders, elbows, wrists, hips)
 Features:   36  (9 × x, y, z, visibility)
 ```
@@ -164,19 +164,17 @@ Features:   36  (9 × x, y, z, visibility)
 
 > Rep counted when elbow goes from > 120° (down) to < 100° (up).
 
-**📊 Model Evaluation**
-
-
-
 </details>
 
 <details>
 <summary><strong>🚶 Lunge</strong> — Dual-Model Stage + Error Pipeline</summary>
 
+<br>
+
 ```
-Stage Model:  lunge_stage_model.pkl  (~2.0 KB)
-Error Model:  lunge_err_model.pkl    (~1.1 KB)
-Scaler:       lunge_input_scaler.pkl (~2.6 KB)
+Stage Model:  lunge_stage_model.pkl   (~2.0 KB)
+Error Model:  lunge_err_model.pkl     (~1.1 KB)
+Scaler:       lunge_input_scaler.pkl  (~2.6 KB)
 Landmarks:    13  (torso, hips, legs, feet)
 Features:     52  (13 × x, y, z, visibility)
 ```
@@ -186,91 +184,89 @@ Features:     52  (13 × x, y, z, visibility)
 - ⚠️ **Knee-over-toe** error (ML model, down stage only)
 - ⚠️ **Knee angle out of range** [60°–125°] (geometric, down stage only)
 
-**📊 Model Evaluation**
-
-
-
 </details>
 
-***
+---
 
 ## 📊 Multi-Set Session Analytics
 
 After completing 1–5 sets, the system computes:
 
-| Metric | How It's Calculated |
-|---|---|
-| `overall_score` | Weighted average of set scores by rep count |
-| `consistency_score` | `100 - variance(scores)` across all sets |
-| `fatigue_index` | `set_1_score - last_set_score` |
-| `accuracy_trend` | `Improving` / `Declining` / `Stable` |
-| `most_frequent_error` | Error type with highest cross-set frequency |
-| `best_set` / `worst_set` | Set numbers with highest / lowest scores |
-| `total_reps` | Sum of all sets |
+| Metric                  | How It's Calculated                                         |
+| :---------------------- | :---------------------------------------------------------- |
+| `overall_score`         | Weighted average of set scores by rep count                 |
+| `consistency_score`     | `100 - variance(scores)` across all sets                    |
+| `fatigue_index`         | `set_1_score - last_set_score`                              |
+| `accuracy_trend`        | `Improving` / `Declining` / `Stable`                        |
+| `most_frequent_error`   | Error type with highest cross-set frequency                 |
+| `best_set` / `worst_set`| Set numbers with highest / lowest scores                   |
+| `total_reps`            | Sum of all sets                                             |
 
-Per-set normalization via `NormalizedMetricExtractor`:
+**Per-set normalization via `NormalizedMetricExtractor`:**
 
 ```python
-normalized_accuracy  = 100 - (10 × total_errors)
-normalized_stability = 100 - ( 5 × total_errors)
+normalized_accuracy        = 100 - (10 × total_errors)
+normalized_stability       = 100 - ( 5 × total_errors)
 normalized_range_of_motion = 100 if errors == 0 else 85
-set_score            = normalized_accuracy
+set_score                  = normalized_accuracy
 ```
 
-***
+---
 
 ## ⚡ WebSocket Real-Time Flow
 
 ```
-Client (150ms interval)              Server (consumers.py)
-─────────────────────────────────────────────────────────────
-connect() ──────────────────────────→ Initialize MediaPipe Pose
-                                      Create detector registry
+Client (150ms interval)                    Server (consumers.py)
+───────────────────────────────────────────────────────────────────
+connect()  ──────────────────────────────→  Initialize MediaPipe Pose
+                                            Create detector registry
 
-{ type: "squat",          ────────→  1. Lazy-load detector
-  image: "data:image/..." }           2. Decode base64 → OpenCV
-                                      3. Rescale to 50%
-                                      4. Run MediaPipe Pose
-                                      5. detector.detect()
-                                      6. Draw landmarks + errors
-{ image: "data:...",      ←────────  7. Encode JPEG (quality 70)
+{ type:  "squat",            ──────────→   1. Lazy-load detector
+  image: "data:image/..." }                 2. Decode base64 → OpenCV
+                                            3. Rescale to 50%
+                                            4. Run MediaPipe Pose
+                                            5. detector.detect()
+                                            6. Draw landmarks + errors
+{ image:   "data:...",       ←──────────   7. Encode JPEG (quality 70)
   counter: 5 }
 
-{ action: "stop" }        ────────→  Build summary from history
+{ action: "stop" }           ──────────→   Build summary from history
 
-{ msg_type: "summary",    ←────────  Serialize errors, frames,
-  details: [...],                     counter state
-  counter: 12 }
+{ msg_type: "summary",       ←──────────   Serialize errors, frames,
+  details:  [...],                          counter state
+  counter:  12 }
 ```
 
-***
+---
 
 ## 🗄️ Database Schema
 
 ### `Session`
-| Field | Type | Description |
-|---|---|---|
-| `session_id` | UUID (PK) | Auto-generated identifier |
-| `exercise_type` | CharField | `squat` / `plank` / `bicep_curl` / `lunge` |
-| `overall_score` | Float | Weighted accuracy (0–100) |
-| `consistency_score` | Float | Score variance metric (0–100) |
-| `fatigue_index` | Float | First set vs last set delta |
-| `accuracy_trend` | CharField | `Improving` / `Declining` / `Stable` |
-| `total_reps` | Integer | Sum across all sets |
-| `total_sets` | Integer | Number of sets analyzed |
-| `timestamp` | DateTime | Session creation time |
+
+| Field              | Type          | Description                                     |
+| :----------------- | :------------ | :---------------------------------------------- |
+| `session_id`       | UUID (PK)     | Auto-generated identifier                       |
+| `exercise_type`    | CharField     | `squat` / `plank` / `bicep_curl` / `lunge`      |
+| `overall_score`    | Float         | Weighted accuracy (0–100)                       |
+| `consistency_score`| Float         | Score variance metric (0–100)                   |
+| `fatigue_index`    | Float         | First set vs last set delta                     |
+| `accuracy_trend`   | CharField     | `Improving` / `Declining` / `Stable`            |
+| `total_reps`       | Integer       | Sum across all sets                             |
+| `total_sets`       | Integer       | Number of sets analyzed                         |
+| `timestamp`        | DateTime      | Session creation time                           |
 
 ### `SessionSet`
-| Field | Type | Description |
-|---|---|---|
-| `session` | FK → Session | Parent session reference |
-| `set_number` | Integer | 1–5 |
-| `raw_report_json` | TextField | Full ML results payload |
-| `set_score` | Float | Normalized accuracy (0–100) |
-| `total_errors` | Integer | Error count for this set |
-| `rep_count` | Integer | Reps detected in this set |
 
-***
+| Field             | Type          | Description                        |
+| :---------------- | :------------ | :--------------------------------- |
+| `session`         | FK → Session  | Parent session reference           |
+| `set_number`      | Integer       | 1–5                                |
+| `raw_report_json` | TextField     | Full ML results payload            |
+| `set_score`       | Float         | Normalized accuracy (0–100)        |
+| `total_errors`    | Integer       | Error count for this set           |
+| `rep_count`       | Integer       | Reps detected in this set          |
+
+---
 
 ## 🌐 API Reference
 
@@ -278,16 +274,17 @@ connect() ───────────────────────�
 BASE URL: http://127.0.0.1:8000
 ```
 
-| Method | Endpoint | Description |
-|---|---|---|
-| `GET` | `/api/` | Health check |
-| `POST` | `/api/video/upload?type={exercise}` | Upload video for ML processing |
-| `GET` | `/api/video/stream?video_name={name}` | Stream processed video (chunked) |
-| `POST` | `/api/video/session/start` | Create new multi-set session |
-| `POST` | `/api/video/session/set/save` | Save individual set results |
-| `POST` | `/api/video/session/aggregate` | Compute session analytics |
+| Method | Endpoint                           | Description                             |
+| :----- | :--------------------------------- | :-------------------------------------- |
+| `GET`  | `/api/`                            | Health check                            |
+| `POST` | `/api/video/upload?type={exercise}`| Upload video for ML processing          |
+| `GET`  | `/api/video/stream?video_name={n}` | Stream processed video (chunked)        |
+| `POST` | `/api/video/session/start`         | Create new multi-set session            |
+| `POST` | `/api/video/session/set/save`      | Save individual set results             |
+| `POST` | `/api/video/session/aggregate`     | Compute session analytics               |
 
 **WebSocket:**
+
 ```
 ws://127.0.0.1:8000/ws/stream/
 
@@ -298,11 +295,12 @@ ws://127.0.0.1:8000/ws/stream/
 ← Recv:   { "msg_type": "summary", "type": "squat", "details": [...], "counter": 12 }
 ```
 
-***
+---
 
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - Python **3.11** with `venv`
 - Node.js **16+** and npm
 - *(Optional)* NVIDIA GPU with CUDA 12.1 for hardware acceleration
@@ -339,7 +337,7 @@ http://localhost:5173
 - 📷 **Real Time** → Webcam-based live detection
 - 📁 **Video Upload** → File-based detection + multi-set analysis
 
-***
+---
 
 ## 🐳 Docker Deployment
 
@@ -354,29 +352,33 @@ docker run -e VITE_BASE_URL=http://127.0.0.1 -p 80:8000 exercise-correction
 open http://127.0.0.1
 ```
 
-***
+---
 
 ## ⚙️ Configuration Reference
 
-| Setting | Location | Default | Purpose |
-|---|---|---|---|
-| `VITE_BASE_URL` | `web/client/.env` | `http://127.0.0.1:8000` | Django API URL for frontend |
-| `OPENBLAS_NUM_THREADS` | npm `dev:server` script | `1` | Prevents multi-model thread crashes |
-| `--noreload` | Django runserver flag | — | Stops double-loading ML models |
-| Pose confidence | `main.py`, `consumers.py` | `0.8` | MediaPipe detection threshold |
-| Video rescale | upload / websocket | `40%` / `50%` | Frame resolution reduction |
-| WS frame rate | `RealTime.vue` | `150ms` (~6.7 FPS) | WebSocket send interval |
-| WS JPEG quality | client / server | `60%` / `70%` | Compression settings |
+| Setting              | Location                  | Default                    | Purpose                              |
+| :------------------- | :------------------------ | :------------------------- | :----------------------------------- |
+| `VITE_BASE_URL`      | `web/client/.env`         | `http://127.0.0.1:8000`    | Django API URL for frontend          |
+| `OPENBLAS_NUM_THREADS`| npm `dev:server` script  | `1`                        | Prevents multi-model thread crashes  |
+| `--noreload`         | Django runserver flag     | —                          | Stops double-loading ML models       |
+| Pose confidence      | `main.py`, `consumers.py` | `0.8`                      | MediaPipe detection threshold        |
+| Video rescale        | upload / websocket        | `40%` / `50%`              | Frame resolution reduction           |
+| WS frame rate        | `RealTime.vue`            | `150ms` (~6.7 FPS)         | WebSocket send interval              |
+| WS JPEG quality      | client / server           | `60%` / `70%`              | Compression settings                 |
 
-***
+---
 
 ## 🛠️ Technology Stack
 
 <table>
 <tr>
-<td valign="top" width="33%">
+<th align="center" width="33%">Frontend</th>
+<th align="center" width="33%">Backend</th>
+<th align="center" width="33%">ML / AI</th>
+</tr>
+<tr>
+<td valign="top">
 
-**Frontend**
 - Vue.js 3 (Composition API)
 - Vue Router 4
 - Vite 3
@@ -386,9 +388,8 @@ open http://127.0.0.1
 - Native WebSocket API
 
 </td>
-<td valign="top" width="33%">
+<td valign="top">
 
-**Backend**
 - Python 3.11
 - Django 4.1.2
 - Django REST Framework 3.14
@@ -397,9 +398,8 @@ open http://127.0.0.1
 - SQLite 3
 
 </td>
-<td valign="top" width="33%">
+<td valign="top">
 
-**ML / AI**
 - MediaPipe 0.10.33
 - Scikit-Learn (.pkl models)
 - OpenCV 4.13
@@ -412,54 +412,55 @@ open http://127.0.0.1
 </tr>
 </table>
 
-***
+---
 
 ## 📁 Project Structure
 
 ```
 Exercise-Correction/
-├── core/                        # 📓 Model training notebooks
+│
+├── core/                            # 📓 Model training notebooks
 │   ├── squat_model/
 │   ├── plank_model/
 │   ├── bicep_model/
 │   └── lunge_model/
 │
-├── images/                      # 📊 Model evaluation matrices
+├── images/                          # 📊 Model evaluation matrices
 │   ├── squat_eval_3.png
 │   ├── plank_eval_3.png
 │   ├── bicep_curl_eval_3.png
 │   └── lunge_eval_3.png
 │
-├── web/
-│   ├── client/                  # 🖥️  Vue 3 SPA
-│   │   └── src/
-│   │       ├── views/
-│   │       │   ├── Home.vue
-│   │       │   ├── VideoStreaming.vue
-│   │       │   └── RealTime.vue
-│   │       └── components/
-│   │           ├── Dropzone.vue
-│   │           ├── Result.vue
-│   │           └── Video.vue
-│   │
-│   └── server/                  # ⚙️  Django backend
-│       ├── detection/           # 🤖 ML inference engine
-│       │   ├── main.py          #    Orchestrator + lazy loader
-│       │   ├── utils.py         #    Angle/distance helpers
-│       │   ├── squat.py
-│       │   ├── plank.py
-│       │   ├── bicep_curl.py
-│       │   └── lunge.py
-│       ├── stream_video/        # 📡 API + WebSocket + DB
-│       │   ├── views.py
-│       │   ├── consumers.py
-│       │   ├── models.py
-│       │   └── services.py
-│       └── static/
-│           └── model/           # 📦 Serialized .pkl models
+└── web/
+    ├── client/                      # 🖥️  Vue 3 SPA
+    │   └── src/
+    │       ├── views/
+    │       │   ├── Home.vue
+    │       │   ├── VideoStreaming.vue
+    │       │   └── RealTime.vue
+    │       └── components/
+    │           ├── Dropzone.vue
+    │           ├── Result.vue
+    │           └── Video.vue
+    │
+    └── server/                      # ⚙️  Django backend
+        ├── detection/               # 🤖 ML inference engine
+        │   ├── main.py              #    Orchestrator + lazy loader
+        │   ├── utils.py             #    Angle/distance helpers
+        │   ├── squat.py
+        │   ├── plank.py
+        │   ├── bicep_curl.py
+        │   └── lunge.py
+        ├── stream_video/            # 📡 API + WebSocket + DB
+        │   ├── views.py
+        │   ├── consumers.py
+        │   ├── models.py
+        │   └── services.py
+        └── static/
+            └── model/               # 📦 Serialized .pkl models
 ```
 
-***
+---
 
 <div align="center">
 
