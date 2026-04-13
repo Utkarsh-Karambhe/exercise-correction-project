@@ -116,6 +116,11 @@ Features:   36  (9 × x, y, z, visibility)
 - ⚠️ Knee collapse or bow-out (stage-dependent thresholds)
 
 **Fallback Counting:** Knee angle oscillation — peaks below 140° / above 160°
+
+**📊 Model Evaluation**
+
+![Squat Model Evaluation Matrix](images/squat_eval_3.png)
+
 </details>
 
 <details>
@@ -134,6 +139,11 @@ Features:   68  (17 × x, y, z, visibility)
 - ⚠️ `H` → Hips raised too high
 
 > No rep counter — plank is a static hold. Error frames are saved on form breaks.
+
+**📊 Model Evaluation**
+
+![Plank Model Evaluation Matrix](images/plank_eval_3.png)
+
 </details>
 
 <details>
@@ -153,6 +163,11 @@ Features:   36  (9 × x, y, z, visibility)
 - 🔢 Left & right arms tracked **independently** via `BicepPoseAnalysis`
 
 > Rep counted when elbow goes from > 120° (down) to < 100° (up).
+
+**📊 Model Evaluation**
+
+![Bicep Curl Model Evaluation Matrix](images/bicep_curl_eval_3.png)
+
 </details>
 
 <details>
@@ -170,6 +185,11 @@ Features:     52  (13 × x, y, z, visibility)
 - Stage: `I` (init) → `M` (mid) → `D` (down) at confidence ≥ 0.8
 - ⚠️ **Knee-over-toe** error (ML model, down stage only)
 - ⚠️ **Knee angle out of range** [60°–125°] (geometric, down stage only)
+
+**📊 Model Evaluation**
+
+![Lunge Model Evaluation Matrix](images/lunge_eval_3.png)
+
 </details>
 
 ---
@@ -404,6 +424,12 @@ Exercise-Correction/
 │   ├── bicep_model/
 │   └── lunge_model/
 │
+├── images/                      # 📊 Model evaluation matrices
+│   ├── squat_eval_3.png
+│   ├── plank_eval_3.png
+│   ├── bicep_curl_eval_3.png
+│   └── lunge_eval_3.png
+│
 ├── web/
 │   ├── client/                  # 🖥️  Vue 3 SPA
 │   │   └── src/
@@ -433,11 +459,6 @@ Exercise-Correction/
 │           └── model/           # 📦 Serialized .pkl models
 ```
 
----
-
-## 📄 License
-
-This project is licensed under the **MIT License** — see the [LICENSE](./LICENSE) file for details.
 
 ---
 
