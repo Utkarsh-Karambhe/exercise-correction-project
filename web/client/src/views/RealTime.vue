@@ -125,8 +125,8 @@ const captureAndSendFrames = () => {
         
         ctx.drawImage(videoElement.value, 0, 0, canvas.width, canvas.height);
         
-        // Compression is crucial for live WebSocket streams to prevent clogging
-        const base64Frame = canvas.toDataURL("image/jpeg", 0.6);
+        // Balanced compression for local streams (higher quality)
+        const base64Frame = canvas.toDataURL("image/jpeg", 0.85);
         
         ws.send(JSON.stringify({
             type: selectedExercise.value,
@@ -227,9 +227,9 @@ onUnmounted(() => {
         </div>
         
         <div class="right-container">
-            <div style="margin-bottom: 2rem;">
-                <h3 style="margin-bottom: 0.5rem; color: var(--secondary-color);">Number of Sets</h3>
-                <select v-model="numberOfSets" style="padding: 10px; width: 100%; border: 3px solid var(--primary-color); border-radius: 5px; font-size: 1.1rem;">
+            <div class="settings-group">
+                <h3>Number of Sets</h3>
+                <select v-model="numberOfSets" class="fancy-select">
                     <option :value="1">1 Set</option>
                     <option :value="2">2 Sets</option>
                     <option :value="3">3 Sets</option>
@@ -283,23 +283,23 @@ onUnmounted(() => {
     </section>
 
     <!-- Results Summary & Multi-Set Tabs -->
-    <div v-if="processedDataRawList.length > 0 && !isStreaming" style="margin-top:2rem; width: 100%; max-width: 900px; padding: 0 1rem;">
-        <h2 style="text-align: center; margin-bottom: 1rem;">Live Session Results</h2>
-        <div style="display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-bottom: 2rem;">
+    <div v-if="processedDataRawList.length > 0 && !isStreaming" class="results-dashboard">
+        <h2 class="dashboard-title">Live Session Results</h2>
+        <div class="tabs-wrapper">
             <button 
                 v-for="set in processedDataRawList" 
                 :key="set.set_number"
                 @click="activeTab = `set-${set.set_number}`"
-                style="padding: 10px 20px; font-weight:bold; cursor:pointer;"
-                :style="activeTab === `set-${set.set_number}` ? 'background-color: var(--primary-color); color: white; border: none; border-radius: 5px;' : ''"
+                class="tab-btn"
+                :class="{ 'active-tab': activeTab === `set-${set.set_number}` }"
             >
                 Set {{ set.set_number }}
             </button>
             <button 
                 v-if="aggregatedSessionData"
                 @click="activeTab = 'final'"
-                style="padding: 10px 20px; font-weight:bold; cursor:pointer;"
-                :style="activeTab === 'final' ? 'background-color: var(--primary-color); color: white; border: none; border-radius: 5px;' : ''"
+                class="tab-btn"
+                :class="{ 'active-tab': activeTab === 'final' }"
             >
                 Final Report
             </button>
@@ -310,20 +310,20 @@ onUnmounted(() => {
             <Result :data="set.data" />
         </div>
 
-        <div v-if="aggregatedSessionData" v-show="activeTab === 'final'" style="border:3px solid var(--primary-color); padding: 2rem; border-radius: 10px; background: white;">
-            <h2>Session Overview ({{ numberOfSets }} Sets)</h2>
-            <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top:2rem;">
-                <div>
-                    <p><strong>Overall Score:</strong> {{ aggregatedSessionData.overall_score.toFixed(2) }}%</p>
-                    <p><strong>Consistency Score:</strong> {{ aggregatedSessionData.consistency_score.toFixed(2) }}</p>
-                    <p><strong>Total Reps:</strong> {{ aggregatedSessionData.total_reps }}</p>
-                    <p><strong>Fatigue Index:</strong> {{ aggregatedSessionData.fatigue_index.toFixed(2) }}</p>
+        <div v-if="aggregatedSessionData" v-show="activeTab === 'final'" class="final-report-card">
+            <h2>Session Overview <span class="badge">{{ numberOfSets }} Sets</span></h2>
+            <div class="metrics-grid">
+                <div class="metric-box">
+                    <p><span>Overall Score</span> <strong>{{ aggregatedSessionData.overall_score.toFixed(2) }}%</strong></p>
+                    <p><span>Consistency</span> <strong>{{ aggregatedSessionData.consistency_score.toFixed(2) }}</strong></p>
+                    <p><span>Total Reps</span> <strong>{{ aggregatedSessionData.total_reps }}</strong></p>
+                    <p><span>Fatigue Index</span> <strong>{{ aggregatedSessionData.fatigue_index.toFixed(2) }}</strong></p>
                 </div>
-                <div>
-                    <p><strong>Accuracy Trend:</strong> {{ aggregatedSessionData.accuracy_trend }}</p>
-                    <p><strong>Most Frequent Error:</strong> {{ aggregatedSessionData.most_frequent_error }}</p>
-                    <p><strong>Best Set:</strong> Set {{ aggregatedSessionData.best_set }}</p>
-                    <p><strong>Worst Set:</strong> Set {{ aggregatedSessionData.worst_set }}</p>
+                <div class="metric-box">
+                    <p><span>Accuracy Trend</span> <strong>{{ aggregatedSessionData.accuracy_trend }}</strong></p>
+                    <p><span>Freq. Error</span> <strong>{{ aggregatedSessionData.most_frequent_error }}</strong></p>
+                    <p><span>Best Set</span> <strong>Set {{ aggregatedSessionData.best_set }}</strong></p>
+                    <p><span>Worst Set</span> <strong>Set {{ aggregatedSessionData.worst_set }}</strong></p>
                 </div>
             </div>
         </div>
@@ -336,10 +336,19 @@ onUnmounted(() => {
     flex-direction: column;
     gap: 2rem;
     align-items: center;
+    margin-bottom: 3rem;
 
     .intro {
         text-align: center;
-        h2 { color: var(--secondary-color); margin-bottom: 0.5rem; }
+        h2 { 
+            font-size: 2.5rem;
+            color: var(--text-main); 
+            margin-bottom: 0.5rem; 
+        }
+        p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
     }
 
     .right-container {
@@ -347,12 +356,45 @@ onUnmounted(() => {
         flex-direction: column;
         width: 100%;
         max-width: 600px;
+        background: var(--surface-light);
+        padding: 2.5rem;
+        border-radius: 24px;
+        border: var(--border-subtle);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         
+        .settings-group {
+            margin-bottom: 2rem;
+            h3 {
+                margin-bottom: 0.8rem;
+                color: var(--text-muted);
+                font-size: 1rem;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+            .fancy-select {
+                width: 100%;
+                padding: 1rem 1.2rem;
+                background: var(--bg-base);
+                color: var(--text-main);
+                border: 2px solid rgba(255, 255, 255, 0.1);
+                border-radius: 12px;
+                font-size: 1.1rem;
+                outline: none;
+                transition: border-color 0.3s;
+                font-family: var(--font-body);
+
+                &:focus {
+                    border-color: var(--primary-color);
+                }
+            }
+        }
+
         .exercises-container {
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
 
             .exercise {
                 display: flex;
@@ -360,42 +402,49 @@ onUnmounted(() => {
                 align-items: center;
                 padding: 1rem 0;
                 flex: calc(50% - 0.5rem);
-                color: var(--secondary-color);
+                color: var(--text-muted);
+                background: rgba(255, 255, 255, 0.03);
+                font-family: var(--font-heading);
                 text-transform: uppercase;
-                border: 3px solid var(--primary-color);
-                border-radius: 0.3rem;
+                letter-spacing: 1px;
+                border: 2px solid rgba(255,255,255,0.05);
+                border-radius: 12px;
                 cursor: pointer;
-                transition: all 0.25s ease;
+                transition: all 0.3s ease;
 
                 &:hover {
-                    box-shadow: 0 6px 18px 0 rgba(#000, 0.1);
-                    transform: translateY(-6px);
+                    background: rgba(255, 255, 255, 0.08);
+                    border-color: rgba(255,255,255,0.2);
+                    transform: translateY(-4px);
                 }
 
                 &.active {
-                    background-color: var(--primary-color);
-                    color: white;
-                    font-weight: 700;
+                    background: rgba(16, 185, 129, 0.1);
+                    color: var(--primary-color);
+                    border-color: var(--primary-color);
+                    box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
                 }
             }
         }
 
         .process-btn {
             border: none;
-            background-color: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-hover), var(--primary-color));
             padding: 1.25rem 0;
-            color: whitesmoke;
+            color: #0f172a;
             font-size: 1.25rem;
-            font-weight: 700;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
             cursor: pointer;
-            border-radius: 8px;
-            transition: all 0.25s ease;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-glow);
 
             &:hover {
-                box-shadow: 0 6px 18px 0 rgba(#000, 0.1);
-                color: var(--primary-color);
-                border-color: transparent;
-                background-color: transparent;
+                transform: translateY(-2px);
+                box-shadow: 0 0 25px rgba(16, 185, 129, 0.4);
+                filter: brightness(1.1);
             }
         }
     }
@@ -405,20 +454,21 @@ onUnmounted(() => {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    gap: 2rem;
     
     .feed-container {
         position: relative;
         width: 100%;
         max-width: 800px;
         background: #000;
-        border-radius: 12px;
+        border-radius: 24px;
         overflow: hidden;
         min-height: 480px;
         display: flex;
         justify-content: center;
         align-items: center;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        border: 2px solid rgba(255,255,255,0.1);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.5);
 
         .live-feed {
             width: 100%;
@@ -427,22 +477,19 @@ onUnmounted(() => {
         }
 
         .loading {
-            color: white;
+            color: var(--primary-color);
             font-size: 1.2rem;
+            font-weight: bold;
             animation: pulse 1.5s infinite;
         }
         
         .server-error {
             position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
             background: rgba(220, 38, 38, 0.9);
             color: white;
             padding: 1rem 2rem;
             border-radius: 8px;
             font-weight: bold;
-            text-align: center;
-            z-index: 10;
         }
 
         .counter-overlay {
@@ -451,34 +498,157 @@ onUnmounted(() => {
             left: 20px;
             
             .counter-box {
-               background: rgba(0, 0, 0, 0.7);
-               color: #fff;
-               padding: 10px 15px;
-               border-radius: 8px;
-               font-family: monospace;
-               font-size: 1.1rem;
-               border: 2px solid var(--primary-color);
+               background: rgba(15, 23, 42, 0.85);
+               backdrop-filter: blur(8px);
+               color: var(--text-main);
+               padding: 15px 20px;
+               border-radius: 16px;
+               font-family: var(--font-heading);
+               font-size: 1.2rem;
+               border: 1px solid rgba(255,255,255,0.1);
+               box-shadow: 0 10px 20px rgba(0,0,0,0.5);
                
-               .label { font-weight: bold; color: var(--primary-color); display: block; margin-bottom: 5px; }
-               pre { margin: 0; }
+               .label { 
+                   font-size: 0.8rem;
+                   text-transform: uppercase;
+                   letter-spacing: 2px;
+                   color: var(--primary-color); 
+                   display: block; 
+                   margin-bottom: 8px; 
+               }
+               pre { margin: 0; font-family: monospace; font-size: 1.3rem; }
             }
         }
     }
 
     .stop-btn {
-        background: #ef4444;
-        color: white;
-        border: none;
+        background: rgba(239, 68, 68, 0.1);
+        color: #ef4444;
+        border: 2px solid #ef4444;
         padding: 1rem 3rem;
         font-size: 1.2rem;
         font-weight: bold;
-        border-radius: 8px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border-radius: 12px;
         cursor: pointer;
-        transition: transform 0.2s;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         
         &:hover {
-            transform: scale(1.05);
-            background: #dc2626;
+            transform: translateY(-4px);
+            background: #ef4444;
+            color: #fff;
+            box-shadow: 0 0 20px rgba(239, 68, 68, 0.4);
+        }
+    }
+}
+
+/* Results Dashboard Styling */
+.results-dashboard {
+    margin-top: 3rem;
+    width: 100%;
+    max-width: 900px;
+    padding: 0 1rem;
+    
+    .dashboard-title {
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 2rem;
+        color: var(--text-main);
+    }
+    
+    .tabs-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+        margin-bottom: 3rem;
+        
+        .tab-btn {
+            background: var(--surface-light);
+            color: var(--text-muted);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            
+            &:hover {
+                background: rgba(255,255,255,0.05);
+                color: var(--text-main);
+            }
+            
+            &.active-tab {
+                background: var(--primary-color);
+                color: #0f172a;
+                border-color: var(--primary-color);
+                box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+            }
+        }
+    }
+    
+    .final-report-card {
+        background: var(--surface-light);
+        border: 1px solid rgba(255,255,255,0.1);
+        backdrop-filter: blur(12px);
+        padding: 3rem;
+        border-radius: 24px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        
+        h2 {
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            
+            .badge {
+                font-size: 0.9rem;
+                background: rgba(16, 185, 129, 0.2);
+                color: var(--primary-color);
+                padding: 4px 12px;
+                border-radius: 20px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            
+            .metric-box {
+                background: rgba(0,0,0,0.2);
+                padding: 2rem;
+                border-radius: 16px;
+                border: 1px solid rgba(255,255,255,0.05);
+                
+                p {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 12px 0;
+                    border-bottom: 1px solid rgba(255,255,255,0.05);
+                    
+                    &:last-child {
+                        border-bottom: none;
+                        padding-bottom: 0;
+                    }
+                    
+                    span {
+                        color: var(--text-muted);
+                        font-size: 0.95rem;
+                    }
+                    
+                    strong {
+                        font-size: 1.1rem;
+                        color: var(--text-main);
+                        font-family: var(--font-heading);
+                    }
+                }
+            }
         }
     }
 }

@@ -1,16 +1,53 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Roboto:wght@400;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;900&family=Inter:wght@400;500;600;700&display=swap");
 
 :root {
-    --primary-color: #41b883;
-    --primary-color-rbg: 65, 184, 131;
-    --primary-color-text: #1e2d50;
-    --secondary-color: #34495e;
-    --font-family: "Poppins", sans-serif;
-    --vn-font-family: "Roboto", sans-serif;
+    /* Colors */
+    --primary-color: #10b981; /* Emerald */
+    --primary-hover: #34d399;
+    --bg-base: #0f172a;       /* Deep slate */
+    --surface-light: rgba(30, 41, 59, 0.7); /* Slate 800 with opacity for glass */
+    --surface-solid: #1e293b; 
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    
+    /* Typography */
+    --font-heading: "Outfit", sans-serif;
+    --font-body: "Inter", sans-serif;
+
+    /* Shadows & Effects */
+    --shadow-glow: 0 0 20px rgba(16, 185, 129, 0.2);
+    --border-subtle: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 * {
-    font-family: var(--font-family);
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-base);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--text-main);
+    letter-spacing: -0.02em;
+}
+
+button {
+    font-family: var(--font-body);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+a {
+    text-decoration: none;
+    transition: all 0.3s ease;
 }
 
 html {
@@ -19,4 +56,19 @@ html {
 
 .invisible {
     visibility: hidden;
+}
+
+/* Base Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-base); 
+}
+::-webkit-scrollbar-thumb {
+    background: #334155; 
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color); 
 }

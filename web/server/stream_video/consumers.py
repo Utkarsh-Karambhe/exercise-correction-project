@@ -75,12 +75,14 @@ class ExerciseStreamConsumer(WebsocketConsumer):
                     # If detector.handle_detected_results fails, fall back to raw results
                     handled = None
 
-                # Normalize results and counter from handler return
+                # Normalize results and metadata from handler return
                 if isinstance(handled, tuple) and len(handled) >= 1:
                     results = handled[0]
-                    counter_from_handler = handled[1] if len(handled) > 1 else None
+                    metadata = handled[1] if len(handled) > 1 else {}
+                    counter_from_handler = metadata.get('counter') if isinstance(metadata, dict) else metadata
                 else:
                     results = getattr(detector, 'results', [])
+                    metadata = {}
                     counter_from_handler = None
 
                 # Convert frame filenames to absolute URLs when applicable
@@ -108,6 +110,7 @@ class ExerciseStreamConsumer(WebsocketConsumer):
                     "processed": True,
                     "file_name": None, # live streams do not save generic mp4 outputs
                     "details": results,
+                    "metadata": metadata,
                     "counter": counter,
                 }
 
@@ -145,8 +148,8 @@ class ExerciseStreamConsumer(WebsocketConsumer):
             # Use elapsed real time for accurate timestamps (seconds)
             timestamp = int(time.time() - self.start_time)
 
-            # Mirror the scaling behavior in detection/main.py
-            image = rescale_frame(image, 50) 
+            # Mirror the scaling behavior but keep high resolution for modern computers
+            image = rescale_frame(image, 80) 
             
             # Predict
             image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
@@ -172,7 +175,7 @@ class ExerciseStreamConsumer(WebsocketConsumer):
                 }
 
             # Ship it back to the client!
-            _, buffer = cv2.imencode('.jpg', image, [int(cv2.IMWRITE_JPEG_QUALITY), 70])
+            _, buffer = cv2.imencode('.jpg', image, [int(cv2.IMWRITE_JPEG_QUALITY), 85])
             b64_output = base64.b64encode(buffer).decode('utf-8')
             resp_image = f"data:image/jpeg;base64,{b64_output}"
 

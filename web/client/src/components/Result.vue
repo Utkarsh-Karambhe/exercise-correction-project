@@ -145,93 +145,128 @@ const jumpToVideoLocation = (second) => {
 
     .tab-links {
         display: flex;
+        gap: 8px;
+        margin-bottom: 1.5rem;
 
         li {
-            width: 6em;
-            padding: 0.75rem 1rem;
-            padding-right: 1.2rem;
-            background-color: rgb(180, 179, 179);
-            border-top-left-radius: 1rem;
-            border-top-right-radius: 1rem;
-            font-size: 1rem;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--surface-light);
+            color: var(--text-muted);
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 600;
             text-transform: uppercase;
+            letter-spacing: 1px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.1);
 
             &.active {
                 background-color: var(--primary-color);
+                color: #0f172a;
+                border-color: var(--primary-color);
+                box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
             }
 
-            &:hover {
-                background-color: rgba($color: #41b883, $alpha: 0.4);
+            &:hover:not(.active) {
+                background-color: rgba(255, 255, 255, 0.05);
+                color: var(--text-main);
             }
         }
     }
 
     .tab-container {
-        padding: 1rem 2rem;
-        border: 3px solid var(--primary-color);
+        padding: 2.5rem;
+        background: var(--surface-light);
+        backdrop-filter: blur(12px);
+        border: var(--border-subtle);
+        border-radius: 24px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.3);
 
         p.main {
-            font-size: 1.5rem;
-            margin: 1rem 0;
+            font-size: 1.35rem;
+            margin: 1rem 0 2rem;
+            font-family: var(--font-heading);
+            color: var(--text-main);
 
             i {
                 font-size: 1.5rem;
+                margin-left: 10px;
             }
         }
 
         ul.errors {
+            list-style: none;
+            padding: 0;
             li {
-                margin: 0.75rem 0;
-                font-size: 1.2rem;
+                margin: 1rem 0;
+                font-size: 1.15rem;
                 text-transform: capitalize;
+                color: var(--text-main);
+                background: rgba(0,0,0,0.2);
+                padding: 1rem 1.5rem;
+                border-radius: 12px;
+                border: 1px solid rgba(255,255,255,0.05);
 
                 i {
                     margin-right: 1rem;
+                    color: var(--primary-color);
                 }
             }
         }
 
         .box-error {
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
+            background: rgba(0,0,0,0.2);
+            padding: 1.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.05);
 
             p {
                 font-size: 1.2rem;
                 text-transform: capitalize;
-                margin-bottom: 0.5rem;
+                margin-bottom: 1rem;
+                color: var(--text-main);
+                font-family: var(--font-heading);
             }
 
             img {
-                width: 500px;
+                width: 100%;
+                max-width: 500px;
+                border-radius: 12px;
+                border: 2px solid rgba(255,255,255,0.1);
             }
 
             span.error-time {
-                color: rgb(85, 149, 171);
+                color: var(--primary-color);
                 cursor: pointer;
+                text-decoration: underline;
+                text-underline-offset: 4px;
             }
 
             hr {
-                background-color: var(--primary-color);
-                color: var(--primary-color);
+                display: none;
             }
         }
 
         .video-container {
-            width: 80%;
+            width: 100%;
             margin-inline: auto;
             display: flex;
             justify-content: center;
             align-items: center;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 2px solid rgba(255,255,255,0.1);
         }
     }
 
     .error-color {
-        color: red;
+        color: #ef4444; /* red-500 */
     }
 
     .info-color {
-        color: rgb(55, 194, 55);
+        color: var(--primary-color);
     }
 }
 </style>

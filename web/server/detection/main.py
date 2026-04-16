@@ -147,6 +147,12 @@ def exercise_detection(
 
             # Calculate timestamp
             frame_count += 1
+            
+            # FRAME SKIPPING: Skip processing every other frame to double processing speed
+            if frame_count % 2 == 0:
+                out.write(image)
+                continue
+
             timestamp = int(frame_count / fps)
 
             image = rescale_frame(image, rescale_percent)
