@@ -46,19 +46,62 @@ Webcam / Video  →  MediaPipe Pose  →  ML Classifier  →  Error Detection  �
 
 ---
 
+## 🎬 Live Demo
+
+<div align="center">
+
+<table>
+<tr>
+<th align="center">🦵 Squat</th>
+<th align="center">🧘 Plank</th>
+</tr>
+<tr>
+<td align="center">
+
+![Squat Demo](images/squat.gif)
+
+</td>
+<td align="center">
+
+![Plank Demo](images/plank.gif)
+
+</td>
+</tr>
+<tr>
+<th align="center">💪 Bicep Curl</th>
+<th align="center">🚶 Lunge</th>
+</tr>
+<tr>
+<td align="center">
+
+![Bicep Curl Demo](images/bicep_curl.gif)
+
+</td>
+<td align="center">
+
+![Lunge Demo](images/lunge.gif)
+
+</td>
+</tr>
+</table>
+
+</div>
+
+---
+
 ## ✨ Key Features
 
-| Feature                    | Description                                              |
-| :------------------------- | :------------------------------------------------------- |
-| 🎥 **Real-Time Detection** | Webcam stream at ~7 FPS via WebSocket                    |
-| 📁 **Video Upload**        | Process pre-recorded `.mp4` / `.webm` files              |
-| 🦴 **Pose Estimation**     | MediaPipe 33-landmark body skeleton                      |
-| 🤖 **ML Form Analysis**    | Trained Scikit-Learn classifiers per exercise            |
-| 🔢 **Rep Counting**        | Automatic stage-based repetition tracking                |
-| ⚠️ **Error Detection**     | Geometric + ML-based error identification                |
-| 📸 **Error Screenshots**   | JPEG snapshots captured at error frames                  |
-| 📦 **Multi-Set Sessions**  | 1–5 sets with fatigue index & trend analysis             |
-| ⚡ **GPU Acceleration**    | Optional Hummingbird-ML + CUDA 12.1 support              |
+| Feature | Description |
+| :--- | :--- |
+| 🎥 **Real-Time Detection** | Webcam stream at ~7 FPS via WebSocket |
+| 📁 **Video Upload** | Process pre-recorded `.mp4` / `.webm` files |
+| 🦴 **Pose Estimation** | MediaPipe 33-landmark body skeleton |
+| 🤖 **ML Form Analysis** | Trained Scikit-Learn classifiers per exercise |
+| 🔢 **Rep Counting** | Automatic stage-based repetition tracking |
+| ⚠️ **Error Detection** | Geometric + ML-based error identification |
+| 📸 **Error Screenshots** | JPEG snapshots captured at error frames |
+| 📦 **Multi-Set Sessions** | 1–5 sets with fatigue index & trend analysis |
+| ⚡ **GPU Acceleration** | Optional Hummingbird-ML + CUDA 12.1 support |
 
 ---
 
@@ -121,6 +164,20 @@ Features:   36  (9 × x, y, z, visibility)
 
 **Fallback Counting:** Knee angle oscillation — peaks below 140° / above 160°
 
+**📊 Model Evaluation:**
+
+| # | Model | Precision | Accuracy | Recall | F1 Score |
+|---|-------|-----------|----------|--------|----------|
+| 🥇 | **LR** | **0.9941** | **0.9941** | **0.9941** | **0.9941** |
+| 🥈 | SGDC | 0.9931 | 0.9930 | 0.9930 | 0.9930 |
+| 🥉 | KNN | 0.9852 | 0.9848 | 0.9848 | 0.9848 |
+| | SVC | 0.9776 | 0.9766 | 0.9766 | 0.9765 |
+| | DTC | 0.2541 | 0.5041 | 0.5041 | 0.3379 |
+| | NB | 0.2541 | 0.5041 | 0.5041 | 0.3379 |
+| | RF | 0.2541 | 0.5041 | 0.5041 | 0.3379 |
+
+> **Deployed model:** `LR` — Logistic Regression with **99.41% accuracy**
+
 </details>
 
 <details>
@@ -141,6 +198,24 @@ Features:   68  (17 × x, y, z, visibility)
 - ⚠️ `H` → Hips raised too high
 
 > No rep counter — plank is a static hold. Error frames are saved on form breaks.
+
+**📊 Model Evaluation:**
+
+| # | Model | Precision | Accuracy | Recall | F1 Score |
+|---|-------|-----------|----------|--------|----------|
+| 🥇 | **LR** | **0.9958** | **0.9958** | **0.9958** | **0.9958** |
+| 🥈 | 7-layers + Dropout | 0.9945 | 0.9944 | 0.9944 | 0.9944 |
+| 🥉 | SVC | 0.9878 | 0.9873 | 0.9873 | 0.9874 |
+| | SGDC | 0.9817 | 0.9817 | 0.9817 | 0.9817 |
+| | KNN | 0.9555 | 0.9493 | 0.9493 | 0.9493 |
+| | 5-layers | 0.9347 | 0.9296 | 0.9296 | 0.9278 |
+| | 7-layers | 0.9352 | 0.9239 | 0.9239 | 0.9230 |
+| | RF | 0.9225 | 0.8986 | 0.8986 | 0.8962 |
+| | 3-layers | 0.8692 | 0.8479 | 0.8479 | 0.8440 |
+| | NB | 0.8568 | 0.8423 | 0.8423 | 0.8380 |
+| | DTC | 0.7738 | 0.7676 | 0.7676 | 0.7654 |
+
+> **Deployed model:** `LR` — Logistic Regression with **99.58% accuracy**
 
 </details>
 
@@ -164,6 +239,24 @@ Features:   36  (9 × x, y, z, visibility)
 
 > Rep counted when elbow goes from > 120° (down) to < 100° (up).
 
+**📊 Model Evaluation:**
+
+| # | Model | Precision | Accuracy | Recall | F1 Score |
+|---|-------|-----------|----------|--------|----------|
+| 🥇 | **KNN** | **0.9754** | **0.9719** | **0.9683** | **0.9712** |
+| 🥈 | 7-layers | 0.9721 | 0.9663 | 0.9623 | 0.9661 |
+| 🥉 | 5-layers | 0.9631 | 0.9553 | 0.9491 | 0.9540 |
+| | SVC | 0.9300 | 0.9321 | 0.9338 | 0.9314 |
+| | RF | 0.9472 | 0.9245 | 0.9246 | 0.9313 |
+| | 7-layers + Dropout | 0.9359 | 0.9245 | 0.9245 | 0.9286 |
+| | 3-layers | 0.9392 | 0.9205 | 0.9208 | 0.9264 |
+| | LR | 0.7927 | 0.7616 | 0.7378 | 0.7406 |
+| | SGDC | 0.7125 | 0.7152 | 0.7150 | 0.7129 |
+| | DTC | 0.6843 | 0.6755 | 0.6505 | 0.6476 |
+| | NB | 0.7974 | 0.6176 | 0.5642 | 0.4867 |
+
+> **Deployed model:** `KNN` — K-Nearest Neighbors with **97.19% accuracy**
+
 </details>
 
 <details>
@@ -184,7 +277,40 @@ Features:     52  (13 × x, y, z, visibility)
 - ⚠️ **Knee-over-toe** error (ML model, down stage only)
 - ⚠️ **Knee angle out of range** [60°–125°] (geometric, down stage only)
 
+**📊 Model Evaluation:**
+
+| # | Model | Precision | Accuracy | Recall | F1 Score |
+|---|-------|-----------|----------|--------|----------|
+| 🥇 | **LR** | **0.9733** | **0.9720** | **0.9720** | **0.9720** |
+| 🥈 | SGDC | 0.9606 | 0.9575 | 0.9575 | 0.9575 |
+| 🥉 | 3-layers | 0.9365 | 0.9277 | 0.9277 | 0.9274 |
+| | DTC | 0.9192 | 0.9169 | 0.9169 | 0.9167 |
+| | 7-layers + Dropout | 0.8921 | 0.8645 | 0.8645 | 0.8624 |
+| | RF | 0.8545 | 0.8419 | 0.8419 | 0.8407 |
+| | 5-layers | 0.8605 | 0.8311 | 0.8311 | 0.8280 |
+| | NB | 0.7704 | 0.7687 | 0.7687 | 0.7682 |
+| | KNN | 0.7684 | 0.7651 | 0.7651 | 0.7647 |
+| | 7-layers | 0.8379 | 0.7733 | 0.7733 | 0.7627 |
+| | SVC | 0.7519 | 0.7200 | 0.7200 | 0.7118 |
+
+> **Deployed model:** `LR` — Logistic Regression with **97.20% accuracy**
+
 </details>
+
+---
+
+## 📊 Model Performance Overview
+
+<div align="center">
+
+| Exercise | Best Model | Accuracy | Precision | Recall | F1 Score |
+|:--------:|:----------:|:--------:|:---------:|:------:|:--------:|
+| 🦵 **Squat** | Logistic Regression | **99.41%** | 99.41% | 99.41% | 99.41% |
+| 🧘 **Plank** | Logistic Regression | **99.58%** | 99.58% | 99.58% | 99.58% |
+| 💪 **Bicep Curl** | KNN | **97.19%** | 97.54% | 96.83% | 97.12% |
+| 🚶 **Lunge** | Logistic Regression | **97.20%** | 97.33% | 97.20% | 97.20% |
+
+</div>
 
 ---
 
@@ -192,15 +318,15 @@ Features:     52  (13 × x, y, z, visibility)
 
 After completing 1–5 sets, the system computes:
 
-| Metric                  | How It's Calculated                                         |
-| :---------------------- | :---------------------------------------------------------- |
-| `overall_score`         | Weighted average of set scores by rep count                 |
-| `consistency_score`     | `100 - variance(scores)` across all sets                    |
-| `fatigue_index`         | `set_1_score - last_set_score`                              |
-| `accuracy_trend`        | `Improving` / `Declining` / `Stable`                        |
-| `most_frequent_error`   | Error type with highest cross-set frequency                 |
-| `best_set` / `worst_set`| Set numbers with highest / lowest scores                   |
-| `total_reps`            | Sum of all sets                                             |
+| Metric | How It's Calculated |
+| :--- | :--- |
+| `overall_score` | Weighted average of set scores by rep count |
+| `consistency_score` | `100 - variance(scores)` across all sets |
+| `fatigue_index` | `set_1_score - last_set_score` |
+| `accuracy_trend` | `Improving` / `Declining` / `Stable` |
+| `most_frequent_error` | Error type with highest cross-set frequency |
+| `best_set` / `worst_set` | Set numbers with highest / lowest scores |
+| `total_reps` | Sum of all sets |
 
 **Per-set normalization via `NormalizedMetricExtractor`:**
 
@@ -243,28 +369,28 @@ connect()  ───────────────────────
 
 ### `Session`
 
-| Field              | Type          | Description                                     |
-| :----------------- | :------------ | :---------------------------------------------- |
-| `session_id`       | UUID (PK)     | Auto-generated identifier                       |
-| `exercise_type`    | CharField     | `squat` / `plank` / `bicep_curl` / `lunge`      |
-| `overall_score`    | Float         | Weighted accuracy (0–100)                       |
-| `consistency_score`| Float         | Score variance metric (0–100)                   |
-| `fatigue_index`    | Float         | First set vs last set delta                     |
-| `accuracy_trend`   | CharField     | `Improving` / `Declining` / `Stable`            |
-| `total_reps`       | Integer       | Sum across all sets                             |
-| `total_sets`       | Integer       | Number of sets analyzed                         |
-| `timestamp`        | DateTime      | Session creation time                           |
+| Field | Type | Description |
+| :--- | :--- | :--- |
+| `session_id` | UUID (PK) | Auto-generated identifier |
+| `exercise_type` | CharField | `squat` / `plank` / `bicep_curl` / `lunge` |
+| `overall_score` | Float | Weighted accuracy (0–100) |
+| `consistency_score` | Float | Score variance metric (0–100) |
+| `fatigue_index` | Float | First set vs last set delta |
+| `accuracy_trend` | CharField | `Improving` / `Declining` / `Stable` |
+| `total_reps` | Integer | Sum across all sets |
+| `total_sets` | Integer | Number of sets analyzed |
+| `timestamp` | DateTime | Session creation time |
 
 ### `SessionSet`
 
-| Field             | Type          | Description                        |
-| :---------------- | :------------ | :--------------------------------- |
-| `session`         | FK → Session  | Parent session reference           |
-| `set_number`      | Integer       | 1–5                                |
-| `raw_report_json` | TextField     | Full ML results payload            |
-| `set_score`       | Float         | Normalized accuracy (0–100)        |
-| `total_errors`    | Integer       | Error count for this set           |
-| `rep_count`       | Integer       | Reps detected in this set          |
+| Field | Type | Description |
+| :--- | :--- | :--- |
+| `session` | FK → Session | Parent session reference |
+| `set_number` | Integer | 1–5 |
+| `raw_report_json` | TextField | Full ML results payload |
+| `set_score` | Float | Normalized accuracy (0–100) |
+| `total_errors` | Integer | Error count for this set |
+| `rep_count` | Integer | Reps detected in this set |
 
 ---
 
@@ -274,14 +400,14 @@ connect()  ───────────────────────
 BASE URL: http://127.0.0.1:8000
 ```
 
-| Method | Endpoint                           | Description                             |
-| :----- | :--------------------------------- | :-------------------------------------- |
-| `GET`  | `/api/`                            | Health check                            |
-| `POST` | `/api/video/upload?type={exercise}`| Upload video for ML processing          |
-| `GET`  | `/api/video/stream?video_name={n}` | Stream processed video (chunked)        |
-| `POST` | `/api/video/session/start`         | Create new multi-set session            |
-| `POST` | `/api/video/session/set/save`      | Save individual set results             |
-| `POST` | `/api/video/session/aggregate`     | Compute session analytics               |
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `GET` | `/api/` | Health check |
+| `POST` | `/api/video/upload?type={exercise}` | Upload video for ML processing |
+| `GET` | `/api/video/stream?video_name={n}` | Stream processed video (chunked) |
+| `POST` | `/api/video/session/start` | Create new multi-set session |
+| `POST` | `/api/video/session/set/save` | Save individual set results |
+| `POST` | `/api/video/session/aggregate` | Compute session analytics |
 
 **WebSocket:**
 
@@ -356,15 +482,15 @@ open http://127.0.0.1
 
 ## ⚙️ Configuration Reference
 
-| Setting              | Location                  | Default                    | Purpose                              |
-| :------------------- | :------------------------ | :------------------------- | :----------------------------------- |
-| `VITE_BASE_URL`      | `web/client/.env`         | `http://127.0.0.1:8000`    | Django API URL for frontend          |
-| `OPENBLAS_NUM_THREADS`| npm `dev:server` script  | `1`                        | Prevents multi-model thread crashes  |
-| `--noreload`         | Django runserver flag     | —                          | Stops double-loading ML models       |
-| Pose confidence      | `main.py`, `consumers.py` | `0.8`                      | MediaPipe detection threshold        |
-| Video rescale        | upload / websocket        | `40%` / `50%`              | Frame resolution reduction           |
-| WS frame rate        | `RealTime.vue`            | `150ms` (~6.7 FPS)         | WebSocket send interval              |
-| WS JPEG quality      | client / server           | `60%` / `70%`              | Compression settings                 |
+| Setting | Location | Default | Purpose |
+| :--- | :--- | :--- | :--- |
+| `VITE_BASE_URL` | `web/client/.env` | `http://127.0.0.1:8000` | Django API URL for frontend |
+| `OPENBLAS_NUM_THREADS` | npm `dev:server` script | `1` | Prevents multi-model thread crashes |
+| `--noreload` | Django runserver flag | — | Stops double-loading ML models |
+| Pose confidence | `main.py`, `consumers.py` | `0.8` | MediaPipe detection threshold |
+| Video rescale | upload / websocket | `40%` / `50%` | Frame resolution reduction |
+| WS frame rate | `RealTime.vue` | `150ms` (~6.7 FPS) | WebSocket send interval |
+| WS JPEG quality | client / server | `60%` / `70%` | Compression settings |
 
 ---
 
@@ -425,11 +551,15 @@ Exercise-Correction/
 │   ├── bicep_model/
 │   └── lunge_model/
 │
-├── images/                          # 📊 Model evaluation matrices
+├── images/                          # 📊 Model evaluation matrices + GIFs
 │   ├── squat_eval_3.png
 │   ├── plank_eval_3.png
 │   ├── bicep_curl_eval_3.png
-│   └── lunge_eval_3.png
+│   ├── lunge_eval_3.png
+│   ├── squat.gif
+│   ├── plank.gif
+│   ├── bicep_curl.gif
+│   └── lunge.gif
 │
 └── web/
     ├── client/                      # 🖥️  Vue 3 SPA
@@ -464,6 +594,8 @@ Exercise-Correction/
 
 <div align="center">
 
-Built with 🏋️ for better workouts · Powered by MediaPipe + Scikit-Learn
+Built with 🏋️ for better workouts · Powered by **MediaPipe** + **Scikit-Learn**
+
+![Visitors](https://visitor-badge.laobi.icu/badge?page_id=exercise-correction)
 
 </div>
